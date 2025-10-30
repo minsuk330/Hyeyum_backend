@@ -1,0 +1,4 @@
+api:
+    #공공데이터
+    key: "K5cuc8UGJT+SAkKjqX5+BM4wI0SdYbexMFkzsFTggi1J3lTJ1j1ztGuxV0hdjBM/8NQE/ojVwOhNABrh7ljU2g=="
+    base-url: "https://apis.data.go.kr/1613000/BldRgstHubService"
