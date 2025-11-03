@@ -1,7 +1,6 @@
 package com.konkuk.gongmojeon.domain.member.service;
 
 import com.konkuk.gongmojeon.api.member.common.auth.dto.MemberLocalRegisterReq;
-import com.konkuk.gongmojeon.api.member.common.auth.dto.MemberRegisterLocalReq;
 import com.konkuk.gongmojeon.common.exception.BusinessException;
 import com.konkuk.gongmojeon.common.exception.ErrorCode;
 import com.konkuk.gongmojeon.domain.member.entity.Member;
@@ -11,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class MemberService {
   private final MemberRepository memberRepository;
+  private final PasswordEncoder passwordEncoder;
 
   public Member getById(Long memberId) {
     return memberRepository.findById(memberId)
@@ -40,6 +41,20 @@ public class MemberService {
 
   @Transactional
   public Member registerLocal(MemberLocalRegisterReq req) {
+    String email = req.getEmail();
 
+    if (memberRepository.findByEmail(email).isPresent()) {
+      throw new BusinessException(ErrorCode.EMAIL_DUPLICATED);
+    }
+    String encodedPassword = passwordEncoder.encode(req.getPassword());
+    return memberRepository.save(
+        Member.builder()
+            .email(email)
+            .password(encodedPassword)
+            .profileImage(req.getProfileImage())
+            .name(req.getName())
+            .isFirstLogin(false)
+            .build()
+    );
   }
 }

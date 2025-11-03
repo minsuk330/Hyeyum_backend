@@ -17,6 +17,7 @@ public class MemberGlobalFacade {
     return MemberResp.builder()
         .id(member.getId())
         .createdAt(member.getCreatedAt())
+        .updatedAt(member.getUpdatedAt())
         .email(member.getEmail())
         .name(member.getName())
         .profileImage(uploadFileService.uploadFileResp(member.getProfileImage()))

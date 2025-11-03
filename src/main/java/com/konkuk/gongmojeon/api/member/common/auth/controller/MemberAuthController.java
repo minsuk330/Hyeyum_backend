@@ -34,7 +34,6 @@ public class MemberAuthController {
     return memberAuthFacade.registerLocal(req);
   }
 
-
   @Operation(summary = "이메일 로그인")
   @PostMapping("/login/local")
   public MemberWithTokenResp login(

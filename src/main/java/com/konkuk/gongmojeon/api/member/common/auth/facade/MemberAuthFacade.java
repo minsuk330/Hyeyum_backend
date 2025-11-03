@@ -2,7 +2,6 @@ package com.konkuk.gongmojeon.api.member.common.auth.facade;
 
 import com.konkuk.gongmojeon.api.member.common.auth.dto.LocalLoginReq;
 import com.konkuk.gongmojeon.api.member.common.auth.dto.MemberLocalRegisterReq;
-import com.konkuk.gongmojeon.api.member.common.auth.dto.MemberRegisterLocalReq;
 import com.konkuk.gongmojeon.api.member.common.auth.dto.MemberWithTokenResp;
 import com.konkuk.gongmojeon.api.member.common.auth.dto.RefreshReq;
 import com.konkuk.gongmojeon.api.member.global.facade.MemberGlobalFacade;
