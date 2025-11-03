@@ -26,6 +26,7 @@ public class Member extends BaseEntity {
 
   private String email;
   private String password;
+  private String name;
 
   @JoinColumn(name = "profile_image_file_id")
   @ManyToOne(fetch = FetchType.LAZY)

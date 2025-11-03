@@ -19,27 +19,20 @@ public class SwaggerConfig
   public OpenAPI customOpenAPI() {
     return new OpenAPI()
         .info(new Info().title("gongmojeon Backend"))
-//        .security(
-//            List.of(
-//                new SecurityRequirement().addList("bearerAuth"),
-//                new SecurityRequirement().addList("adminSessionHeader")
-//            )
-//        )
-//        .schemaRequirement("bearerAuth", new SecurityScheme()
-//            .type(SecurityScheme.Type.HTTP)
-//            .scheme("bearer")
-//            .bearerFormat("JWT")
-//            .in(SecurityScheme.In.HEADER)
-//            .name("Authorization")
-//        )
-//        .schemaRequirement("adminSessionHeader", new SecurityScheme()
-//            .type(Type.APIKEY)
-//            .in(In.HEADER)
-//            .name("X-KMORGAN-SID")
-//        )
+        .security(
+            List.of(
+                new SecurityRequirement().addList("bearerAuth")
+            )
+        )
+        .schemaRequirement("bearerAuth", new SecurityScheme()
+            .type(SecurityScheme.Type.HTTP)
+            .scheme("bearer")
+            .bearerFormat("JWT")
+            .in(SecurityScheme.In.HEADER)
+            .name("Authorization")
+        )
         .servers(List.of(
             new Server().url("http://localhost:8080").description("local")
-//            new Server().url("https://api.kmorgan.co.kr").description("production")
         ));
   }
 
